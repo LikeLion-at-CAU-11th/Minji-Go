@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
 html {
     height: 100%;
+    width: 100vw;
+    height: 100vh;
 }
 
 body{
+    margin: 0;
+    padding: 0;
     position:relative;
     width: 100vw;
     background-image: url('img/grid.jpg');
