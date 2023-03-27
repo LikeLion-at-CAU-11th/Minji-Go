@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
 html {
-    height: 100%;
     width: 100vw;
     height: 100vh;
 }
@@ -8,10 +7,9 @@ html {
 body{
     margin: 0;
     padding: 0;
-    position:relative;
     width: 100vw;
     background-image: url('img/grid.jpg');
-    background-repeat : no-repeat;
+    background-repeat : repeat-y;
     background-size : cover;
 }
 
@@ -22,7 +20,7 @@ body{
 }
 
 .top{
-    margin-top: 100px;
+    margin-top: 17vh;
 }
 
 #title0 {
