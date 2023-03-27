@@ -9,7 +9,6 @@ body{
     padding: 0;
     position:relative;
     width: 100vw;
-    height: 200vh;
     background-image: url('img/grid.jpg');
     background-repeat : repeat-y;
     background-size : cover;
