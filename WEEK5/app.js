@@ -11,6 +11,9 @@ const rockBtn = document.getElementById('rock');
 const scissorsBtn = document.getElementById('scissors');
 const paperBtn = document.getElementById('paper');
 
+const PLAYER_WIN=0;
+const PLAYER_LOSE=1;
+
 // a. 과제 - 스코어 변경 (html에서 class인거 id로 변경함)
 const myScore = document.getElementById('my-score');
 const computerScore = document.getElementById('computer-score');
@@ -30,31 +33,14 @@ resetBtn.addEventListener('click', resetScore);
 modeBtn.addEventListener('click', changeMode);
 
 function changeMode(){
-    if(modeBtn.innerText=="다크모드 🌝"){
-        modeBtn.innerText="라이트모드 🌞";
-        document.body.classList.add('dark');
-        document.getElementById('contents-wrapper').classList.add('dark');
-        document.getElementById('rock').classList.add('dark');
-        document.getElementById('scissors').classList.add('dark');
-        document.getElementById('paper').classList.add('dark');
-        document.getElementsByClassName('display-title')[0].classList.add('dark');
-        document.getElementsByClassName('display-title')[1].classList.add('dark');
-        document.getElementById('reset-button').classList.add('dark');
-        document.getElementById('mode-button').classList.add('dark');
-    }
-
-    else if(modeBtn.innerText=="라이트모드 🌞"){
-        modeBtn.innerText="다크모드 🌝";
-        document.body.classList.remove('dark');
-        document.getElementById('contents-wrapper').classList.remove('dark');
-        document.getElementById('rock').classList.remove('dark');
-        document.getElementById('scissors').classList.remove('dark');
-        document.getElementById('paper').classList.remove('dark');
-        document.getElementsByClassName('display-title')[0].classList.remove('dark');
-        document.getElementsByClassName('display-title')[1].classList.remove('dark');
-        document.getElementById('reset-button').classList.remove('dark');
-        document.getElementById('mode-button').classList.remove('dark');
-    }
+    if(modeBtn.innerText=="다크모드 🌝"){modeBtn.innerText="라이트모드 🌞";}
+    else {modeBtn.innerText="다크모드 🌝";}
+    document.body.classList.toggle('dark');
+    ['contents-wrapper','rock','scissors','paper','reset-button','mode-button'].forEach((element)=>{
+        document.getElementById(element).classList.toggle('dark');
+    });
+    document.getElementsByClassName('display-title')[0].classList.toggle('dark');
+    document.getElementsByClassName('display-title')[1].classList.toggle('dark');
 }
 
 //3. 함수가 실행될 때, 이벤트가 발생한 dom 객체에 접근하기(e.target)
@@ -96,7 +82,7 @@ function startGame(myChoice) {
         case 'sp':
         case 'pr':
             result.innerText='win';
-            changeScore(0);
+            changeScore(PLAYER_WIN);
             break;
         
         case "rr":
@@ -109,7 +95,7 @@ function startGame(myChoice) {
         case "sr":
         case "ps":
             result.innerText='lose';
-            changeScore(1);
+            changeScore(PLAYER_LOSE);
             break;
     }
 
