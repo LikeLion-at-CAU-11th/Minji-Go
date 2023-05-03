@@ -23,8 +23,8 @@ const resetBtn = document.getElementById('reset');
 const modeBtn = document.getElementById('mode-button')
 
 //2. 선언한 dom 요소에 클릭이벤트 주기
-const arr = undefined;
-([rockBtn,scissorsBtn,paperBtn] || arr).forEach((button)=>{
+document.addEventListener("DOMContentLoaded", ()=> {});
+[rockBtn,scissorsBtn,paperBtn].forEach((button)=>{
     button.addEventListener('click',displayMyChoice);});
 
 // b. 과제 - 리셋버튼 클릭이벤트
