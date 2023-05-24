@@ -6,11 +6,11 @@ import {
   getUserPerStack,
 } from "../../apis/lioninfo";
 
-const FilterButton = ({ id, title, type, setUserData, handleSelect, isSelected, page}) => {
+const FilterButton = ({ id, title, type, setUserData, handleSelect, isSelected}) => {
   const handleClickButton = async () => {
     // type 에 따라서 어떤 api를 호출할건지를 결정해주는 함수
     if (type === "page") {
-      const response = await getUserPerPage(page);
+      const response = await getUserPerPage(1);
       setUserData(response.data.data);
     } else if (type === "stack") {
       const response = await getUserPerStack(title);
