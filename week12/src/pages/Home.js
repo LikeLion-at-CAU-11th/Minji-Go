@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Form, Input, Inputs, Title, Wrapper } from "../components/Common";
 import { styled } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../apis/login";
 
 const Home = () => {
   const [id, setId] = useState("");
   const [pw, setPW] = useState("");
+  const router = useNavigate();
+
   const onChangeId = (e) => {
     setId(e.target.value);
   };
@@ -13,9 +16,14 @@ const Home = () => {
     setPW(e.target.value);
   };
 
-  const onClick = () => {
-    //로그인 api
-  }
+  const onClick = async () => {
+    const result = await login(id,pw);
+    console.log(result);
+    const {accessToken, refreshToken} =result;  // 구조분해할당
+    localStorage.setItem('access',accessToken);
+    localStorage.setItem('refresh',refreshToken);
+    router('/mypage')
+  };
   return (
     <Wrapper>
       <Title>로그인하기</Title>
@@ -29,7 +37,7 @@ const Home = () => {
             onChange={onChangePW}
           />
         </Inputs>
-        <Button>Login</Button>
+        <Button onClick={onClick}>Login</Button>
       </Form>
       <CustomLink to="/signup">회원가입하기</CustomLink>
     </Wrapper>
