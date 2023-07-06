@@ -17,12 +17,12 @@ const Home = () => {
   };
 
   const onClick = async () => {
-    const result = await login(id,pw);
+    const result = await login(id, pw);
     console.log(result);
-    const {accessToken, refreshToken} =result;  // 구조분해할당
-    localStorage.setItem('access',accessToken);
-    localStorage.setItem('refresh',refreshToken);
-    router('/mypage')
+    const { accessToken, refreshToken } = result; // 구조분해할당
+    localStorage.setItem("access", accessToken);
+    localStorage.setItem("refresh", refreshToken);
+    router("/mypage");
   };
   return (
     <Wrapper>

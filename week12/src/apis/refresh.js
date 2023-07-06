@@ -5,10 +5,12 @@ export const getNewRefreshToken = async () => {
   const refreshToken = localStorage.getItem("refresh");
   const result = await axios.post(
     "http://front.cau-likelion.org/refresh",
-    {  // 요청 body
+    {
+      // 요청 body
       refreshToken,
     },
-    {  // headers.Authorization 필수
+    {
+      // headers.Authorization 필수
       headers: {
         Authorization: accessToken,
       },
