@@ -11,12 +11,20 @@ const Home = () => {
   const router = useNavigate();
 
   const onClick = async () => {
-    const result = await login(id, pw);
-    console.log(result);
-    const { accessToken, refreshToken } = result; // 구조분해할당
-    localStorage.setItem("access", accessToken);
-    localStorage.setItem("refresh", refreshToken);
-    router("/mypage");
+    try{
+      const result = await login(id, pw);
+      console.log(result);
+      const { accessToken, refreshToken } = result; // 구조분해할당
+      localStorage.setItem("access", accessToken);
+      localStorage.setItem("refresh", refreshToken);
+      router("/mypage");
+    } catch(error){
+      if(error.response.status===401){
+        alert("비밀번호가 틀렸습니다 ㅠㅅㅠ");
+      }
+      else alert("존재하지 않는 아이디 ㅇㅅㅇ");
+    }
+    
   };
   return (
     <Wrapper>
@@ -44,7 +52,11 @@ const Button = styled.div`
   background-color: black;
   color: white;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 10px 20px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const CustomLink = styled(Link)`
