@@ -3,18 +3,12 @@ import { Form, Input, Inputs, Title, Wrapper } from "../components/Common";
 import { styled } from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../apis/login";
+import { useForm } from '../hooks/useForm';
 
 const Home = () => {
-  const [id, setId] = useState("");
-  const [pw, setPW] = useState("");
+  const [id, onChangeId] = useForm();
+  const [pw, onChangePW] = useForm();
   const router = useNavigate();
-
-  const onChangeId = (e) => {
-    setId(e.target.value);
-  };
-  const onChangePW = (e) => {
-    setPW(e.target.value);
-  };
 
   const onClick = async () => {
     const result = await login(id, pw);
