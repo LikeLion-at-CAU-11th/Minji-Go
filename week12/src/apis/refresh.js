@@ -16,5 +16,6 @@ export const getNewRefreshToken = async () => {
       },
     }
   );
+  console.log(result)
   return result.data;
 };
