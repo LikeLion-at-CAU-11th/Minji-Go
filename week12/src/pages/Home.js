@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Input, Inputs, Title, Wrapper } from "../components/Common";
 import { styled } from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../apis/login";
-import { useForm } from '../hooks/useForm';
+import { useForm } from "../hooks/useForm";
 
 const Home = () => {
   const [id, onChangeId] = useForm();
@@ -11,20 +11,23 @@ const Home = () => {
   const router = useNavigate();
 
   const onClick = async () => {
-    try{
+    try {
+      // 입력값 검증
+      if (id.length === 0 || pw.length === 0) throw "inputNullError";
+     
       const result = await login(id, pw);
       console.log(result);
       const { accessToken, refreshToken } = result; // 구조분해할당
       localStorage.setItem("access", accessToken);
       localStorage.setItem("refresh", refreshToken);
       router("/mypage");
-    } catch(error){
-      if(error.response.status===401){
-        alert("비밀번호가 틀렸습니다 ㅠㅅㅠ");
-      }
-      else alert("존재하지 않는 아이디 ㅇㅅㅇ");
+    } catch (error) {
+      if (error === "inputNullError"){
+        alert("입력값을 모두 넣어주세요");
+      } else if (error.response.status === 401) {
+        alert("비밀번호가 틀렸습니다");
+      } else alert("존재하지 않는 아이디입니다");
     }
-    
   };
   return (
     <Wrapper>
