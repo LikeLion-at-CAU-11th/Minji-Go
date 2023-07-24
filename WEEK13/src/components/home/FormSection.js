@@ -18,12 +18,25 @@ const FormSection = () => {
       <Form type="text" inputType="이름" />
       <Form type="email" inputType="이메일" />
       <Form type="date" inputType="날짜" />
-      <Button mode={mode.button} onClick={openModal}>
-        제출
-      </Button>
+      <ButtonDom>
+        <Button mode={mode.button} onClick={openModal}>
+          제출
+        </Button>
+      </ButtonDom>
+
       {modalOpen && <Modal setModalOpen={setModalOpen} />}
     </>
   );
 };
 
 export default FormSection;
+
+const ButtonDom = styled.div`
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 15px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

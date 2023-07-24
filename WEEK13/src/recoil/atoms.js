@@ -7,7 +7,7 @@ export const userNameAtom = atom({
 
 export const emailAtom = atom({
     key:'email',
-    default:'000'
+    default:'likelion@naver.com'
 })
 
 export const isSubmitedAtom = atom({
@@ -17,5 +17,5 @@ export const isSubmitedAtom = atom({
 
 export const dateAtom = atom({
     key:'date',
-    default: '000'
+    default: 'YYYY-MM-DD'
 })

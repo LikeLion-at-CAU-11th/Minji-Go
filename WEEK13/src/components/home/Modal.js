@@ -41,10 +41,10 @@ const Modal = ({ setModalOpen }) => {
   return (
     <ModalWrapper ref={modalEl}  onClick={handleClickOutside}>
       <ModalDom mode={mode.sub}>
-      <Title>check</Title>
-      <div>이름 | {userName}</div>
-      <div>이메일 | {email}</div>
-      <div>날짜 | {date}</div>
+      <Title>입력 정보 확인</Title>
+      <div>🧑🏻‍💻 {userName}</div>
+      <div>✉️ {email}</div>
+      <div>🗓️ {date}</div>
       <ButtonDom>
         <Button mode={mode.button} onClick={handleClick}>
           확인
@@ -64,8 +64,8 @@ const ModalWrapper = styled.div`
   position: absolute;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  width: 100vw;
+  min-height: 90vh;
+  min-width: 90vw;
   display: flex;
   flex-direction: column;
   align-items: center;

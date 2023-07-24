@@ -4,6 +4,7 @@ import { ThemeContext } from "../context/context";
 import { userNameAtom, emailAtom, isSubmitedAtom, dateAtom } from "../recoil/atoms";
 import { useResetRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
+import { styled } from "styled-components";
 
 const MyPage = () => {
   const mode = useContext(ThemeContext);
@@ -15,6 +16,7 @@ const MyPage = () => {
   const reset = useResetRecoilState(isSubmitedAtom);
 
   const userName = useRecoilValue(userNameAtom);
+  const date = useRecoilValue(dateAtom);
 
   const handleDelete = () => {
     reset();
@@ -27,7 +29,8 @@ const MyPage = () => {
 
   return (
     <Wrapper>
-      <Title>welcome {userName}</Title>
+      <DateTitle>{date}</DateTitle>
+      <MainTitle>Hello {userName}✋🏻</MainTitle>
       <Button mode={mode.button} onClick={handleDelete}>
         리셋
       </Button>
@@ -36,3 +39,15 @@ const MyPage = () => {
 };
 
 export default MyPage;
+
+const DateTitle = styled.div`
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 10px;
+`
+
+const MainTitle = styled.div`
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 20px;
+`

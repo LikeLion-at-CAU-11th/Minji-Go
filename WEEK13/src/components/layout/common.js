@@ -20,6 +20,7 @@ export const Button = styled.button`
 `;
 
 export const Title = styled.div`
-  font-size: 30px;
+  font-size: 23px;
   margin: 20px;
+  font-weight: 600;
 `;
