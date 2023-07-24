@@ -27,5 +27,3 @@ const FormSection = () => {
 };
 
 export default FormSection;
-
-const FormSectionDom = styled.div``;

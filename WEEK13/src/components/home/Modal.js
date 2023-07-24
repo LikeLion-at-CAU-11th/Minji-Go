@@ -88,7 +88,6 @@ const ModalDom = styled.div`
 `;
 
 const ButtonDom = styled.div`
-  background-color: aliceblue;
   margin-top: 15px;
   padding: 10px;
   border-radius: 15px;
